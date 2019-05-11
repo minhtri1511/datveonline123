@@ -1,0 +1,24 @@
+<resources>
+    <string name="app_name">Book train tickets</string>
+    <string name="tv_ten">Tên</string>
+    <string name="tv_sdt">Số Điện Thoại</string>
+    <string name="editT_ten">Nhập tên</string>
+    <string name="editT_sdt">Nhập Số Điện Thoại</string>
+    <string name="tv_member">Thành viên</string>
+    <string name="radioB_vip">VIP</string>
+    <string name="radioB_normal">Thườnng</string>
+    <string name="tv_lv">Loại vé</string>
+    <string name="radioB_nam">Ghế nằm</string>
+    <string name="radioB_ngoi">Ghế ngồii</string>
+    <string name="cb_dv">Dịch vụ</string>
+    <string name="tv_dv">(Nước Uống,Thức ăn...)</string>
+    <string name="tv_tt">Thanh toán</string>
+    <string-array name="spinner_tien">
+        <item>USD</item>
+        <item>VND</item>
+        <item>EUR</item>
+        <item>CNY</item>
+    </string-array>
+    <string name="bt_huy">Hủy</string>
+    <string name="bt_thanhtoan">Thanh toán</string>
+</resources>
