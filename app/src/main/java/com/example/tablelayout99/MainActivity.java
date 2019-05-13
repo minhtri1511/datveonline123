@@ -33,6 +33,9 @@ public class MainActivity extends AppCompatActivity {
         final RadioButton rbgiuong =  (RadioButton) findViewById(R.id.radioB_nam);
         final RadioButton rbghe =  (RadioButton) findViewById(R.id.radioB_ngoi);
         final Spinner spintt =  (Spinner) findViewById(R.id.spinner_tien);
+        final int nam = 1200000;
+        final int ngoi = 800000;
+        final int dv = 60000;
 
         btnhuy.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -46,25 +49,31 @@ public class MainActivity extends AppCompatActivity {
         lan_array.add("USD");
         lan_array.add("VND");
 
-//khởi tạo đối tượng ArrayAdapter dùng tập hợp dữ liệu và layout spinner mặc định
+//kh?i t?o d?i tu?ng ArrayAdapter dùng t?p h?p d? li?u và layout spinner m?c d?nh
 
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(
                 this, android.R.layout.simple_spinner_item, lan_array);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-//gán đối tượng adapter đến spinner
+//gán d?i tu?ng adapter d?n spinner
 
         spintt.setAdapter(adapter);
 
         btntt.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
+
+                float tt = 0;
+                String a = "VND";
+                String b = spintt.getSelectedItem().toString();
                 String msg = "Tên: " + editten.getText().toString() +
                         System.getProperty("line.separator") +
-                        "SĐT: " + editsdt.getText().toString()
+                        "SÐT: " + editsdt.getText().toString()
                         + System.getProperty("line.separator") +
                         "Thành viên: ";
 
                 editten.setText("");
                 editsdt.setText("");
+
+
 
                 if(rbvip.isChecked())
                     msg += rbvip.getText().toString()+ System.getProperty("line.separator") +"Loại vé: ";
@@ -83,27 +92,117 @@ public class MainActivity extends AppCompatActivity {
                     msg += "Không";
 
 
+                msg += System.getProperty("line.separator") + "Hình thức thanh toán : " +
+                        spintt.getSelectedItem().toString();
+
+                if(rbvip.isChecked())
+                {
+                    if(rbgiuong.isChecked()&& chk1.isChecked()){
+                        tt = (nam + dv)*70/100;
+                        if(b.equals(a))
+                            msg += System.getProperty("line.separator") + "Thành tiền: " +  tt + "VNÐ";
+                        else {
+                            tt = tt/20000;
+                            msg += System.getProperty("line.separator") + "Thành tiền: " +  tt + "USD";
+                        }
+                    }
+                    else if(rbghe.isChecked() && chk1.isChecked())
+                    {
+                        tt = (ngoi + dv)*70/100;
+                        //msg += System.getProperty("line.separator") + "Thành ti?n: " +  tt + "VNÐ";
+                        if(b.equals(a))
+                            msg += System.getProperty("line.separator") + "Thành tiền: " +  tt + "VNÐ";
+                        else {
+                            tt = tt/20000;
+                            msg += System.getProperty("line.separator") + "Thành tiền: " +  tt + "USD";
+                        }
+                    }
+                    else if(rbgiuong.isChecked())
+                    {
+                        tt = nam*70/100;
+                        //msg += System.getProperty("line.separator") + "Thành ti?n: " +  tt + "VNÐ";
+                        if(b.equals(a))
+                            msg += System.getProperty("line.separator") + "Thành tiền: " +  tt + "VNÐ";
+                        else {
+                            tt = tt/20000;
+                            msg += System.getProperty("line.separator") + "Thành tiền: " +  tt + "USD";
+                        }
+                    }
+                    else if(rbghe.isChecked())
+                    {
+                        tt = ngoi*70/100;
+                        //msg += System.getProperty("line.separator") + "Thành ti?n: " +  tt + "VNÐ";
+                        if(b.equals(a))
+                            msg += System.getProperty("line.separator") + "Thành tiền: " +  tt + "VNÐ";
+                        else {
+                            tt = tt/20000;
+                            msg += System.getProperty("line.separator") + "Thành tiền: " +  tt + "USD";
+                        }
+                    }
+
+                }
+                if(rbthuong.isChecked())
+                {
+                    if(rbgiuong.isChecked()&& chk1.isChecked()){
+                        tt = nam + dv;
+                        //msg += System.getProperty("line.separator") + "Thành ti?n: " +  tt + "VNÐ";
+                        if(b.equals(a))
+                            msg += System.getProperty("line.separator") + "Thành  tiền: " +  tt + "VNÐ";
+                        else {
+                            tt = tt/20000;
+                            msg += System.getProperty("line.separator") + "Thành  tiền: " +  tt + "USD";
+                        }
+                    }
+                    else if(rbghe.isChecked() && chk1.isChecked())
+                    {
+                        tt = ngoi + dv;
+                        //msg += System.getProperty("line.separator") + "Thành ti?n: " +  tt + "VNÐ";
+                        if(b.equals(a))
+                            msg += System.getProperty("line.separator") + "Thành tiền: " +  tt + "VNÐ";
+                        else {
+                            tt = tt/20000;
+                            msg += System.getProperty("line.separator") + "Thành  tiền: " +  tt + "USD";
+                        }
+                    }
+                    else if(rbgiuong.isChecked())
+                    {
+                        tt = nam;
+                        //msg += System.getProperty("line.separator") + "Thành ti?n: " +  tt + "VNÐ";
+                        if(b.equals(a))
+                            msg += System.getProperty("line.separator") + "Thành tiền: " +  tt + "VNÐ";
+                        else {
+                            tt = tt/20000;
+                            msg += System.getProperty("line.separator") + "Thành tiền: " +  tt + "USD";
+                        }
+                    }
+                    else if(rbghe.isChecked())
+                    {
+                        tt = ngoi;
+                        //msg += System.getProperty("line.separator") + "Thành ti?n: " +  tt + "VNÐ";
+                        if(b.equals(a))
+                            msg += System.getProperty("line.separator") + "Thành tiền: " +  tt + "VNÐ";
+                        else {
+                            tt = tt/20000;
+                            msg += System.getProperty("line.separator") + "Thành tiền: " +  tt + " USD";
+                        }
+                    }
+
+                }
 
 
+                msg +=System.getProperty("line.separator") + "CẢM ƠN QUÍ KHÁCH !!!";
+
+
+
+                info (v,msg);
                 rbvip.setChecked(false);
                 rbthuong.setChecked(false);
                 rbgiuong.setChecked(false);
                 rbghe.setChecked(false);
-
-                msg += System.getProperty("line.separator") + "Hình thức thanh toán: " +
-                        spintt.getSelectedItem().toString()+ System.getProperty("line.separator") +
-                        System.getProperty("line.separator") + "CẢM ƠN QUÝ KHÁCH !!!";
-
-                info(v,msg);
+                chk1.setChecked(false);
 
             }
         });
-
-
-
-
-
-
 
     }
     public void info(View v, String msg){
